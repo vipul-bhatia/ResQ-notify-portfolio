@@ -1,11 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true,
-  },
+  output: 'export',
+  // experimental: {
+  //   appDir: true,
+  // },
   images: {
-    unoptimized: true,
-  },
+       unoptimized: true,
+     },
 };
 
 module.exports = nextConfig;
