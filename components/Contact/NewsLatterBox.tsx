@@ -8,7 +8,7 @@ const NewsLatterBox = () => {
       Have a Feature Request for ResQ-Notify?
       </h3>
       <p className="mb-11 border-b border-body-color border-opacity-25 pb-11 text-base font-medium leading-relaxed text-body-color dark:border-white dark:border-opacity-25">
-      We value your feedback! If you have any ideas or features you'd like to see in ReqNotify, let us know. 
+      We value your feedback! If you have any ideas or features you like to see in ReqNotify, let us know. 
       </p>
       <form>
         {/* <input

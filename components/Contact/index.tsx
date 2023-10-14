@@ -15,10 +15,10 @@ const Contact = () => {
               Prebook Now and Stay Informed
               </h2>
               <p className="mb-12 text-base font-medium text-body-color">
-              Be among the first to know when our product is ready for launch. Prebook now, and we'll notify you as soon as it's available.
+              Be among the first to know when our product is ready for launch. Prebook now, and we will notify you as soon as it is available.
               </p>
               <form>
-                <div className="-mx-4 flex flex-wrap">
+                <div className="mx-4 flex flex-wrap">
                   <div className="w-full px-4 md:w-1/2">
                     <div className="mb-8">
                       <label
