@@ -18,7 +18,7 @@ const Hero = () => {
                 ResQ-Notify
                 </h1>
                 <p className="mb-12 text-base font-medium !leading-relaxed text-body-color dark:text-white dark:opacity-90 sm:text-lg md:text-xl">
-               Your next hope for life, dedicated to making a difference when it matters most. Our mission is to provide timely and crucial notifications that can save lives, ensuring that you're always in the know when it comes to safety and security. Powered by advanced technology, we detect crashes through your dashcam and GoPro, enhancing your safety with precision.
+               Your next hope for life, dedicated to making a difference when it matters most. Our mission is to provide timely and crucial notifications that can save lives, ensuring that you are always in the know when it comes to safety and security. Powered by advanced technology, we detect crashes through your dashcam and GoPro, enhancing your safety with precision.
                 </p>
                 <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
                   <Link
