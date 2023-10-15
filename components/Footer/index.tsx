@@ -16,16 +16,16 @@ const Footer = () => {
                   <Image
                     src="images/logo/logo.svg"
                     alt="logo"
-                    className="w-full dark:hidden"
+                    className="dark:hidden"
                     width={140}
                     height={30}
                   />
                   <Image
                     src="/images/logo/Logo.png"
                     alt="logo"
-                    className="w-full overflow-hidden"
+                    className="overflow-hidden"
                     width={140}
-                    height={30}
+                    height={20}
                   />
                 </Link>
 
