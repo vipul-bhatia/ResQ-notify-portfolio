@@ -7,7 +7,7 @@ const AboutPage = () => {
     <>
       <Breadcrumb
         pageName="About Page"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius eros eget sapien consectetur ultrices. Ut quis dapibus libero."
+        description="ResQ-Notify is revolutionizing the way we leverage DashCams and GoPros. Discover optimal usage tips and unlock the full potential of these products."
       />
       <AboutSectionOne />
       <AboutSectionTwo />

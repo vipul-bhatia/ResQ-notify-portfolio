@@ -1,6 +1,37 @@
+'use client';
 import NewsLatterBox from "./NewsLatterBox";
+import React, { useState } from 'react';
+import { db } from '../firebase/config.js';
 
 const Contact = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [contact, setContact] = useState('');
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
+  
+
+  const handleSubscribe = async (e: any) => {
+    e.preventDefault();
+  
+    // Validate form inputs
+    if (!name || !email || !contact) {
+      setError('All fields are required');
+      return;
+    }
+  
+    try {
+      await db.collection('ResQ-Notify-PreBook').add({ name, email, contact });
+      setName('');
+      setEmail('');
+      setContact('');
+      setMessage('Thanks for subscribing!');
+      setError(''); // Clear the error message on success
+    } catch (error) {
+      console.error('Error adding email: ', error);
+      setMessage('Failed to subscribe. Try again later.');
+    }
+  };
   return (
     <section id="contact" className="overflow-hidden py-16 md:py-20 lg:py-28">
       <div className="container">
@@ -17,7 +48,7 @@ const Contact = () => {
               <p className="mb-12 text-base font-medium text-body-color">
               Be among the first to know when our product is ready for launch. Prebook now, and we will notify you as soon as it is available.
               </p>
-              <form>
+              <form  onSubmit={handleSubscribe}    >
                 <div className="mx-4 flex flex-wrap">
                   <div className="w-full px-4 md:w-1/2">
                     <div className="mb-8">
@@ -31,6 +62,8 @@ const Contact = () => {
                         type="text"
                         placeholder="Enter your name"
                         className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                       />
                     </div>
                   </div>
@@ -46,6 +79,8 @@ const Contact = () => {
                         type="email"
                         placeholder="Enter your email"
                         className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                       />
                     </div>
                   </div>
@@ -62,17 +97,23 @@ const Contact = () => {
                         rows={5}
                         placeholder="Enter your Address"
                         className="w-full resize-none rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
+                        value={contact}
+                        onChange={(e) => setContact(e.target.value)}
                       ></textarea>
                     </div>
                   </div>
                   <div className="w-full px-4">
-                    <button className="rounded-md bg-primary py-4 px-9 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp">
+                    <button type="submit" className="rounded-md bg-primary py-4 px-9 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp">
                       Prebook for me!
                     </button>
+                    <p className="text-center lg:text-left lg:absolute mt-2 opacity-300 text-sm">{message}</p>
+      {error && <p className="text-red-500">{error}</p>}
                   </div>
+                  
                 </div>
               </form>
             </div>
+         
           </div>
           <div className="w-full px-4 lg:w-5/12 xl:w-4/12">
             <NewsLatterBox />

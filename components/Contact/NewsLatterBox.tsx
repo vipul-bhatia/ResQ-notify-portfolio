@@ -1,4 +1,32 @@
+'use client';
+import React, { useState } from 'react';
+import { db } from '../firebase/config.js';
+
 const NewsLatterBox = () => {
+  const [feature, setFeature] = useState('');
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
+  
+
+  const handleSubscribe = async (e: any) => {
+    e.preventDefault();
+  
+    // Validate form inputs
+    if (!feature) {
+      setError('All fields are required');
+      return;
+    }
+  
+    try {
+      await db.collection('ResQ-Notify-FeatureRequest').add({ feature });
+      setFeature('');
+      setMessage('Thanks for requesting!');
+      setError(''); // Clear the error message on success
+    } catch (error) {
+      console.error('Error adding email: ', error);
+      setMessage('Failed to subscribe. Try again later.');
+    }
+  };
   return (
     <div
       className="wow fadeInUp relative z-10 rounded-md bg-primary/[3%] p-8 dark:bg-primary/10 sm:p-11 lg:p-8 xl:p-11"
@@ -10,7 +38,7 @@ const NewsLatterBox = () => {
       <p className="mb-11 border-b border-body-color border-opacity-25 pb-11 text-base font-medium leading-relaxed text-body-color dark:border-white dark:border-opacity-25">
       We value your feedback! If you have any ideas or features you like to see in ReqNotify, let us know. 
       </p>
-      <form>
+      <form onSubmit={handleSubscribe}>
         {/* <input
           type="text"
           name="name"
@@ -23,15 +51,21 @@ const NewsLatterBox = () => {
           rows={5}
          placeholder="Enter your request"
          className="mb-4 w-full rounded-md border border-body-color border-opacity-10 py-3 px-6 text-base font-medium text-body-color placeholder-body-color outline-none focus:border-primary focus:border-opacity-100 focus-visible:shadow-none dark:border-white dark:border-opacity-10 dark:bg-[#242B51] focus:dark:border-opacity-50"
+          value={feature}
+          onChange={(e) => setFeature(e.target.value)}
          />
        
         <input
           type="submit"
           value="Submit Request"
           className="duration-80 mb-4 w-full cursor-pointer rounded-md border border-transparent bg-primary py-3 px-6 text-center text-base font-medium text-white outline-none transition ease-in-out hover:bg-opacity-80 hover:shadow-signUp focus-visible:shadow-none"
+
         />
        
       </form>
+      <p className="text-sm text-body-color">{message}</p>
+      <p className="text-sm text-red-500">{error}</p>
+  
       <div className="absolute top-0 left-0 z-[-1]">
         <svg
           width="370"

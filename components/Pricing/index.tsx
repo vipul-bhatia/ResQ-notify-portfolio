@@ -22,7 +22,7 @@ const Pricing = () => {
             className="wow fadeInUp mb-8 flex justify-center md:mb-12 lg:mb-16"
             data-wow-delay=".1s"
           >
-            <span
+            {/* <span
               onClick={() => setIsMonthly(true)}
               className={`${
                 isMonthly
@@ -31,8 +31,8 @@ const Pricing = () => {
               } mr-4 cursor-pointer text-base font-semibold`}
             >
               Monthly
-            </span>
-            <div
+            </span> */}
+            {/* <div
               onClick={() => setIsMonthly(!isMonthly)}
               className="flex cursor-pointer items-center"
             >
@@ -46,8 +46,8 @@ const Pricing = () => {
                   <span className="active h-4 w-4 rounded-full bg-white"></span>
                 </div>
               </div>
-            </div>
-            <span
+            </div> */}
+            {/* <span
               onClick={() => setIsMonthly(false)}
               className={`${
                 isMonthly
@@ -56,7 +56,7 @@ const Pricing = () => {
               } ml-4 cursor-pointer text-base font-semibold`}
             >
               Yearly
-            </span>
+            </span> */}
           </div>
         </div>
 
@@ -64,7 +64,7 @@ const Pricing = () => {
           <PricingBox
             packageName="Starter"
             price={isMonthly ? "29" : "249"}
-            duration={isMonthly ? "mo" : "yr"}
+            duration={isMonthly ? "" : ""}
             subtitle="Perfect for personal users looking to use ReqNotify's safety features."
           >
             <OfferList text="Basic Hardware Integration" status="active" />
@@ -75,7 +75,7 @@ const Pricing = () => {
           <PricingBox
             packageName="Pro"
             price={isMonthly ? "79" : "699"}
-            duration={isMonthly ? "mo" : "yr"}
+            duration={isMonthly ? "" : ""}
             subtitle="Ideal for medium-sized fleets looking to optimize safety and efficiency."
           >
             <OfferList text="Advanced Hardware Integration" status="active" />
@@ -86,7 +86,7 @@ const Pricing = () => {
           <PricingBox
             packageName="Enterprise"
             price={isMonthly ? "199" : "1699"}
-            duration={isMonthly ? "mo" : "yr"}
+            duration={isMonthly ? "" : ""}
             subtitle="Tailored solutions for large fleets with extensive safety requirements."
           >
             <OfferList text="Custom Hardware Integration" status="active" />
