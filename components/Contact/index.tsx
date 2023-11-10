@@ -25,7 +25,7 @@ const Contact = () => {
       setName('');
       setEmail('');
       setContact('');
-      setMessage('Thanks for subscribing!');
+      setMessage('Thanks for Pre-Booking!');
       setError(''); // Clear the error message on success
     } catch (error) {
       console.error('Error adding email: ', error);

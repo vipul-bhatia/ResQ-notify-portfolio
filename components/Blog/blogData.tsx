@@ -36,9 +36,9 @@ const blogData: Blog[] = [
       "We are elated to share our latest report at #AIProStackSolutions, offering extensive insights into the Two-Wheeler Insurance Market in India. This in-depth analysis focuses on essential KPIs, unveiling patterns and valuable data to comprehend the current market scenario better.",
     image: "/images/blog/blog-03.jpg",
     author: {
-      name: "Lethium Deo",
+      name: "AIProStack Solutions",
       image: "/images/blog/author-03.png",
-      designation: "Graphic Designer",
+      designation: "Software Company",
     },
     tags: ["Report"],
     publishDate: "2025",

@@ -1,6 +1,36 @@
+'use client';
 import Link from "next/link";
+import React, { useState } from 'react';
+import { db } from '../../components/firebase/config.js';
 
 const SignupPage = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [contact, setContact] = useState('');
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
+
+  const handleSubscribe = async (e: any) => {
+    e.preventDefault();
+  
+    // Validate form inputs
+    if (!name || !email || !contact) {
+      setError('All fields are required');
+      return;
+    }
+  
+    try {
+      await db.collection('resq_email_notify').add({ name, email, contact });
+      setName('');
+      setEmail('');
+      setContact('');
+      setMessage('Thanks for Contacting Us!');
+      setError(''); // Clear the error message on success
+    } catch (error) {
+      console.error('Error adding email: ', error);
+      setMessage('Failed to subscribe. Try again later.');
+    }
+  };
   return (
     <>
       <section className="relative z-10 overflow-hidden pt-36 pb-16 md:pb-20 lg:pt-[180px] lg:pb-28">
@@ -14,9 +44,7 @@ const SignupPage = () => {
                 <p className="mb-11 text-center text-base font-medium text-body-color">
                   We'll get back to you as soon as possible.
                 </p>
-             
-
-                <form>
+                <form onSubmit={handleSubscribe} >
                   <div className="mb-8">
                     <label
                       htmlFor="name"
@@ -30,6 +58,8 @@ const SignupPage = () => {
                       name="name"
                       placeholder="Enter your full name"
                       className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
                     />
                   </div>
                   <div className="mb-8">
@@ -45,6 +75,8 @@ const SignupPage = () => {
                       name="email"
                       placeholder="Enter your Email"
                       className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
                   <div className="mb-8">
@@ -56,33 +88,22 @@ const SignupPage = () => {
                       Your Phone No.{" "}
                     </label>
                     <input
-                      type="password"
-                      name="password"
-                      placeholder="Enter your Password"
+                      type="tel"
+                      name="contact"
+                      placeholder="Enter your Phone No."
                       className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
+                      value={contact}
+                      onChange={(e) => setContact(e.target.value)}
                     />
                   </div>
-                  <div className="mb-8 flex">
-                    <label
-                      htmlFor="checkboxLabel"
-                      className="flex cursor-pointer select-none text-sm font-medium text-body-color"
-                    >
-                      <div className="relative">
-                        <input
-                          type="checkbox"
-                          id="checkboxLabel"
-                          className="sr-only"
-                        />
-                      
-                      </div>
-                    
-                    </label>
-                  </div>
+
                   <div className="mb-6">
-                    <button className="flex w-full items-center justify-center rounded-md bg-primary py-4 px-9 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp">
+                    <button type="submit" className="flex w-full items-center justify-center rounded-md bg-primary py-4 px-9 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp">
                       Submit
                     </button>
                   </div>
+                  <p className="text-center lg:text-left lg:absolute mt-2 opacity-300 text-sm">{message}</p>
+                  <p className="text-center lg:text-left lg:absolute mt-2 opacity-300 text-sm">{error}</p>
                 </form>
                
               </div>

@@ -5,7 +5,7 @@ import SingleTestimonial from "./SingleTestimonial";
 const testimonialData: Testimonial[] = [
   {
     id: 1,
-    name: "Sarah Johnson",
+    name: "Deepak Dua",
     designation: "Tech Enthusiast",
     content:
       "Even though ReqNotify is not yet launched, I had the opportunity to see its demo, and I must say I'm excited about the product. The idea behind it is revolutionary, and I can't wait to use it!",
@@ -14,8 +14,8 @@ const testimonialData: Testimonial[] = [
   },
   {
     id: 2,
-    name: "David Smith",
-    designation: "Startup Founder",
+    name: "Shivam Aggarwal",
+    designation: "Software Engineer",
     content:
       "ReqNotify has the potential to be a game-changer. After witnessing the demo, I'm truly impressed by its capabilities. This product is set to disrupt the industry, and I'm eager to see the final product in action!",
     image: "/images/testimonials/david-smith.png",
@@ -23,7 +23,7 @@ const testimonialData: Testimonial[] = [
   },
   {
     id: 3,
-    name: "Emily White",
+    name: "Antoine Maurais",
     designation: "Product Manager",
     content:
       "I had the privilege of previewing ReqNotify, and I must say I'm already a fan. The concept is brilliant, and the demo was incredibly promising. I'm looking forward to incorporating ReqNotify into my vehicle fleet!",
