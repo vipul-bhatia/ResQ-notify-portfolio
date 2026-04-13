@@ -1,12 +1,9 @@
 "use client";
-import { useState } from "react";
 import SectionTitle from "../Common/SectionTitle";
 import OfferList from "./OfferList";
 import PricingBox from "./PricingBox";
 
 const Pricing = () => {
-  const [isMonthly, setIsMonthly] = useState(true);
-
   return (
     <section id="pricing" className="relative z-10 py-16 md:py-20 lg:py-28">
       <div className="container">
@@ -63,8 +60,8 @@ const Pricing = () => {
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
           <PricingBox
             packageName="Starter"
-            price={isMonthly ? "29" : "249"}
-            duration={isMonthly ? "" : ""}
+            price="100"
+            duration="/month"
             subtitle="Perfect for personal users looking to use ReqNotify's safety features."
           >
             <OfferList text="Basic Hardware Integration" status="active" />
@@ -74,8 +71,8 @@ const Pricing = () => {
           </PricingBox>
           <PricingBox
             packageName="Pro"
-            price={isMonthly ? "79" : "699"}
-            duration={isMonthly ? "" : ""}
+            price="200"
+            duration="/month"
             subtitle="Ideal for medium-sized fleets looking to optimize safety and efficiency."
           >
             <OfferList text="Advanced Hardware Integration" status="active" />
@@ -85,8 +82,8 @@ const Pricing = () => {
           </PricingBox>
           <PricingBox
             packageName="Enterprise"
-            price={isMonthly ? "199" : "1699"}
-            duration={isMonthly ? "" : ""}
+            price="Custom"
+            duration=""
             subtitle="Tailored solutions for large fleets with extensive safety requirements."
           >
             <OfferList text="Custom Hardware Integration" status="active" />

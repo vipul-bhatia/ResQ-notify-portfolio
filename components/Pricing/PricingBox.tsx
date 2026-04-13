@@ -3,9 +3,18 @@ const PricingBox = (props: {
   duration: string;
   packageName: string;
   subtitle: string;
+  /** One-time hardware range per unit (matches business model). */
+  hardwareRange?: string;
   children: React.ReactNode;
 }) => {
-  const { price, duration, packageName, subtitle, children } = props;
+  const {
+    price,
+    duration,
+    packageName,
+    subtitle,
+    hardwareRange = "₹6,000 – ₹8,000",
+    children,
+  } = props;
   const scrollToNewsletter = () => {
     const newsletterSection = document.getElementById('contact');
 
@@ -26,7 +35,42 @@ const PricingBox = (props: {
             {packageName}
           </h4>
         </div>
-        <p className="mb-7 text-base text-body-color">{subtitle}</p>
+        <p className="mb-6 text-base text-body-color">{subtitle}</p>
+
+        <div className="mb-6 space-y-4">
+          <div>
+            <p className="mb-1 text-xs font-medium uppercase tracking-wide text-body-color">
+              Subscription
+            </p>
+            {price === "Custom" ? (
+              <p className="text-3xl font-bold text-dark dark:text-white">Custom</p>
+            ) : (
+              <p className="flex flex-wrap items-baseline gap-x-1 text-dark dark:text-white">
+                <span className="text-3xl font-bold">
+                  <span className="text-primary">₹</span>
+                  {price}
+                </span>
+                {duration ? (
+                  <span className="text-base font-medium text-body-color">
+                    {duration}
+                  </span>
+                ) : null}
+              </p>
+            )}
+          </div>
+          <div>
+            <p className="mb-1 text-xs font-medium uppercase tracking-wide text-body-color">
+              Device (one-time)
+            </p>
+            <p className="text-lg font-semibold text-dark dark:text-white">
+              {hardwareRange}
+              <span className="ml-1 text-sm font-normal text-body-color">
+                per unit
+              </span>
+            </p>
+          </div>
+        </div>
+
         <div className="mb-8 border-b border-body-color border-opacity-10 pb-8 dark:border-white dark:border-opacity-10">
           <button onClick={scrollToNewsletter} className="flex w-full items-center justify-center rounded-md bg-primary p-3 text-base font-semibold text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp">
             Pre Book Now!
